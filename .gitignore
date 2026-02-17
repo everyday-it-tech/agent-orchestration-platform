@@ -1,0 +1,11 @@
+__pycache__/
+*.pyc
+.env
+.env.*
+.aws/
+venv/
+.venv/
+*.log
+*.db
+
+MUST KEEPS/

@@ -1,0 +1,30 @@
+services:
+  eval_worker:
+    build: .
+    command: ["python", "src/eval_worker.py"]
+    environment:
+      AWS_REGION: "us-east-1"
+      TASK_QUEUE_URL: "https://sqs.us-east-1.amazonaws.com/766464362927/agent-task-queue"
+      HITL_QUEUE_URL: "https://sqs.us-east-1.amazonaws.com/766464362927/hitl-approval-queue"
+      BUCKET_NAME: "rnd-pipeline-results-766464362927"
+    volumes:
+      - ~/.aws:/root/.aws:ro
+
+  exec_worker:
+    build: .
+    command: ["python", "src/exec_worker.py"]
+    environment:
+      AWS_REGION: "us-east-1"
+      EXEC_QUEUE_URL: "https://sqs.us-east-1.amazonaws.com/766464362927/execution-queue"
+      BUCKET_NAME: "REPLACE_ME"
+    volumes:
+      - ~/.aws:/root/.aws:ro
+
+  log_ingest_worker:
+    build: .
+    command: ["python", "src/log_ingest_worker.py"]
+    environment:
+      AWS_REGION: "us-east-1"
+      TASK_QUEUE_URL: "https://sqs.us-east-1.amazonaws.com/766464362927/agent-task-queue"
+    volumes:
+      - ~/.aws:/root/.aws:ro
