@@ -16,7 +16,7 @@ services:
     environment:
       AWS_REGION: "us-east-1"
       EXEC_QUEUE_URL: "https://sqs.us-east-1.amazonaws.com/766464362927/execution-queue"
-      BUCKET_NAME: "REPLACE_ME"
+      BUCKET_NAME: "rnd-pipeline-results-766464362927"
     volumes:
       - ~/.aws:/root/.aws:ro
 
