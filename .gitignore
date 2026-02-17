@@ -8,4 +8,7 @@ venv/
 *.log
 *.db
 
-MUST KEEPS/
+.local/
+.env_assets/
+*.csv
+*.png
