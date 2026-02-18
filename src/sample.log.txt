@@ -1,0 +1,12 @@
+  log_ingest_worker:
+    build: .
+    command: ["python", "src/log_ingest_worker.py"]
+    environment:
+      AWS_REGION: "us-east-1"
+      TASK_QUEUE_URL: "https://sqs.us-east-1.amazonaws.com/766464362927/agent-task-queue"
+      OPENAI_API_KEY: "${OPENAI_API_KEY}"
+      LOG_MODE: "file"
+      LOG_FILE: "/app/sample_logs.txt"
+    volumes:
+      - ~/.aws:/root/.aws:ro
+      - ./sample_logs.txt:/app/sample_logs.txt:ro

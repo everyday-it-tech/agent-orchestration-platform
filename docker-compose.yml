@@ -26,5 +26,8 @@ services:
     environment:
       AWS_REGION: "us-east-1"
       TASK_QUEUE_URL: "https://sqs.us-east-1.amazonaws.com/766464362927/agent-task-queue"
+      OPENAI_API_KEY: "${OPENAI_API_KEY}"
+      LOG_MODE: "file"
+      LOG_FILE: "/app/src/sample_log.txt"
     volumes:
       - ~/.aws:/root/.aws:ro
